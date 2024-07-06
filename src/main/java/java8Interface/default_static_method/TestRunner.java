@@ -7,6 +7,10 @@ public class TestRunner {
         mycar.headLight();
         mycar.applyBrake();
         Vehicle.steering();//Vehicle is an interface
+
+        Car_Override_DefaultMethod_Interface caroveride=new Car_Override_DefaultMethod_Interface();
+        caroveride.applyBrake();
+        caroveride.soundHorn();
     }
 
 }
