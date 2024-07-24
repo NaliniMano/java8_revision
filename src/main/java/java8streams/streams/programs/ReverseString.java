@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class ReverseString {
     /**
-     * Given a string return the reverse of it using stream
+     * Given array  of string return the reverse of it using stream
      *
      */
     public static void main(String[] args) {
