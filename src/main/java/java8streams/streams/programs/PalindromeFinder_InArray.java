@@ -26,7 +26,7 @@ public class PalindromeFinder_InArray {
 
     public static boolean isPalidrome(String word)
     {
-        return word.equals(new StringBuilder(word).reverse().toString());
+        return word.contentEquals(new StringBuilder(word).reverse());
     }
 
 }
