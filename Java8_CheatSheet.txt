@@ -1,0 +1,77 @@
+Certainly! Below is a cheat sheet for Java 8 features, focusing on widely used methods
+ for quick reference.
+
+### Java 8 Features Cheat Sheet
+
+| Feature             | Description                                                      | Common Methods / Usage Examples                                    |
+|---------------------|------------------------------------------------------------------|--------------------------------------------------------------------|
+| **Lambda Expressions** | Enable you to write functions in a concise way.                | `(parameters) -> expression` or `(parameters) -> { statements; }`  |
+| **Streams API**     | Provides a functional approach to process sequences of elements. | `.stream()`, `.filter()`, `.map()`, `.reduce()`, `.collect()`       |
+| **Default Methods** | Allow interfaces to have methods with implementation.            | `default void methodName() { }`                                    |
+| **Functional Interfaces** | Interfaces with a single abstract method.                   | `@FunctionalInterface`, `Runnable`, `Callable`, `Comparator`       |
+| **Method References** | Simplifies the syntax for calling methods.                      | `ClassName::methodName`, `object::methodName`                      |
+| **Optional**        | A container object to handle optional values.                    | `Optional.of()`, `Optional.ofNullable()`, `Optional.empty()`, `.isPresent()`, `.ifPresent()`, `.orElse()`, `.orElseGet()`, `.orElseThrow()` |
+| **Date and Time API** | Modern date and time API for handling dates and times.           | `LocalDate`, `LocalTime`, `LocalDateTime`, `ZonedDateTime`, `.now()`, `.of()`, `.parse()`, `.plusDays()`, `.minusDays()`, `.format()` |
+| **Collectors**      | Used to collect elements from a stream.                          | `Collectors.toList()`, `Collectors.toSet()`, `Collectors.toMap()`, `Collectors.joining()`, `Collectors.groupingBy()`, `Collectors.partitioningBy()` |
+| **Streams Operations** | Terminal and intermediate operations on streams.               | `.forEach()`, `.map()`, `.filter()`, `.collect()`, `.reduce()`, `.sorted()`, `.distinct()`, `.limit()`, `.skip()` |
+| **UnaryOperator**   | Represents an operation on a single operand.                     | `UnaryOperator<T>`, `.apply(T t)`                                  |
+| **BinaryOperator**  | Represents an operation on two operands.                         | `BinaryOperator<T>`, `.apply(T t1, T t2)`                          |
+| **Parallel Streams** | Enables parallel processing of streams.                         | `.parallelStream()`, `.parallel()`, `.sequential()`                |
+| **Predicate**       | Represents a boolean-valued function.                            | `Predicate<T>`, `.test(T t)`, `.and()`, `.or()`, `.negate()`       |
+| **Function**        | Represents a function that produces a result.                    | `Function<T, R>`, `.apply(T t)`, `.compose()`, `.andThen()`        |
+| **Consumer**        | Represents an operation that accepts a single input argument.    | `Consumer<T>`, `.accept(T t)`, `.andThen()`                        |
+| **Supplier**        | Represents a supplier of results.                                | `Supplier<T>`, `.get()`                                            |
+
+### Examples
+
+#### Lambda Expression
+
+```java
+List<String> names = Arrays.asList("John", "Jane", "Jack");
+names.forEach(name -> System.out.println(name));
+```
+
+#### Streams API
+
+```java
+List<String> names = Arrays.asList("John", "Jane", "Jack");
+List<String> filteredNames = names.stream()
+                                  .filter(name -> name.startsWith("J"))
+                                  .collect(Collectors.toList());
+```
+
+#### Optional
+
+```java
+Optional<String> optional = Optional.of("Hello");
+optional.ifPresent(System.out::println);
+```
+
+#### Date and Time API
+
+```java
+LocalDate today = LocalDate.now();
+LocalDate birthday = LocalDate.of(1990, Month.JULY, 5);
+```
+
+#### Method Reference
+
+```java
+names.forEach(System.out::println);
+```
+
+#### UnaryOperator
+
+```java
+UnaryOperator<Integer> square = x -> x * x;
+System.out.println(square.apply(5));  // Output: 25
+```
+
+#### BinaryOperator
+
+```java
+BinaryOperator<Integer> sum = (a, b) -> a + b;
+System.out.println(sum.apply(3, 7));  // Output: 10
+```
+
+This cheat sheet covers the key features and widely used methods in Java 8 for quick reference. Feel free to ask if you need more detailed examples or explanations!
