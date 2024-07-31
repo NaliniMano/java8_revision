@@ -1,0 +1,157 @@
+Certainly! Below is a cheat sheet for Java 8 features in Confluence format, including widely used methods for quick reference.
+
+---
+
+## Java 8 Features Cheat Sheet
+
+### 1. **Lambda Expressions**
+```java
+(parameters) -> expression
+(parameters) -> { statements; }
+```
+**Examples:**
+```java
+Runnable r = () -> System.out.println("Hello, world!");
+BinaryOperator<Integer> add = (a, b) -> a + b;
+```
+
+### 2. **Functional Interfaces**
+- **Common Interfaces:**
+  - `Predicate<T>`: `boolean test(T t);`
+  - `Function<T, R>`: `R apply(T t);`
+  - `Consumer<T>`: `void accept(T t);`
+  - `Supplier<T>`: `T get();`
+  - `UnaryOperator<T>`: `T apply(T t);`
+  - `BinaryOperator<T>`: `T apply(T t1, T t2);`
+
+### 3. **Stream API**
+
+#### Creating Streams
+```java
+Stream<T> stream = Stream.of(...);
+Stream<T> stream = Arrays.stream(array);
+List<T> list = ...;
+Stream<T> stream = list.stream();
+```
+
+#### Intermediate Operations
+```java
+Stream<T> filter(Predicate<? super T> predicate)
+<R> Stream<R> map(Function<? super T, ? extends R> mapper)
+<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper)
+Stream<T> distinct()
+Stream<T> sorted()
+Stream<T> sorted(Comparator<? super T> comparator)
+Stream<T> limit(long maxSize)
+Stream<T> skip(long n)
+```
+
+#### Terminal Operations
+```java
+void forEach(Consumer<? super T> action)
+long count()
+Optional<T> findFirst()
+Optional<T> findAny()
+boolean allMatch(Predicate<? super T> predicate)
+boolean anyMatch(Predicate<? super T> predicate)
+boolean noneMatch(Predicate<? super T> predicate)
+Optional<T> max(Comparator<? super T> comparator)
+Optional<T> min(Comparator<? super T> comparator)
+<R, A> R collect(Collector<? super T, A, R> collector)
+Object[] toArray()
+<T> T[] toArray(IntFunction<T[]> generator)
+```
+
+#### Collectors
+```java
+Collector<T, ?, List<T>> toList()
+Collector<T, ?, Set<T>> toSet()
+Collector<T, ?, Map<K, U>> toMap(Function<? super T, ? extends K> keyMapper,
+                                 Function<? super T, ? extends U> valueMapper)
+Collector<T, ?, Double> averagingDouble(ToDoubleFunction<? super T> mapper)
+Collector<T, ?, Long> counting()
+Collector<T, ?, Optional<T>> maxBy(Comparator<? super T> comparator)
+Collector<T, ?, Optional<T>> minBy(Comparator<? super T> comparator)
+Collector<T, ?, String> joining()
+Collector<T, ?, String> joining(CharSequence delimiter)
+Collector<T, ?, String> joining(CharSequence delimiter, CharSequence prefix, CharSequence suffix)
+```
+
+### 4. **Optional**
+```java
+Optional<T> optional = Optional.of(value);
+Optional<T> optional = Optional.ofNullable(value);
+Optional<T> optional = Optional.empty();
+```
+**Common Methods:**
+```java
+boolean isPresent()
+void ifPresent(Consumer<? super T> consumer)
+T get()
+T orElse(T other)
+T orElseGet(Supplier<? extends T> other)
+<R> Optional<R> map(Function<? super T, ? extends R> mapper)
+<R> Optional<R> flatMap(Function<? super T, Optional<R>> mapper)
+```
+
+### 5. **Date and Time API**
+#### Creating Dates and Times
+```java
+LocalDate date = LocalDate.now();
+LocalTime time = LocalTime.now();
+LocalDateTime dateTime = LocalDateTime.now();
+ZonedDateTime zonedDateTime = ZonedDateTime.now();
+```
+
+#### Parsing and Formatting
+```java
+LocalDate date = LocalDate.parse("2024-07-05");
+LocalDateTime dateTime = LocalDateTime.parse("2024-07-05T10:15:30");
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+String formattedDate = date.format(formatter);
+```
+
+#### Manipulating Dates and Times
+```java
+LocalDate date = LocalDate.now().plusDays(10);
+LocalTime time = LocalTime.now().minusHours(2);
+LocalDateTime dateTime = LocalDateTime.now().withHour(10);
+```
+
+### 6. **Default Methods in Interfaces**
+```java
+public interface MyInterface {
+    default void defaultMethod() {
+        System.out.println("This is a default method");
+    }
+}
+```
+
+### 7. **Static Methods in Interfaces**
+```java
+public interface MyInterface {
+    static void staticMethod() {
+        System.out.println("This is a static method");
+    }
+}
+```
+
+### 8. **Method References**
+```java
+// Static method reference
+Consumer<String> print = System.out::println;
+
+// Instance method reference of a particular object
+String str = "Hello";
+Supplier<Integer> length = str::length;
+
+// Instance method reference of an arbitrary object of a particular type
+Function<String, Integer> stringLength = String::length;
+
+// Constructor reference
+Supplier<ArrayList<String>> listSupplier = ArrayList::new;
+```
+
+---
+
+This cheat sheet provides a quick reference for some of the most widely used features and methods introduced in Java 8. You can copy this format and content into your Confluence page for easy access.
