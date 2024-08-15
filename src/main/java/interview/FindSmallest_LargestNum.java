@@ -15,3 +15,4 @@ public class FindSmallest_LargestNum {
         System.out.println("Small" + small +"Largest"+large);
     }
 }
+ 
